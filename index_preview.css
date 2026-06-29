@@ -1,0 +1,42 @@
+/* Custom CSS rules for Verve Medical Landing Page */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+/* Webkit Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090d16;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* 3D Perspective container classes */
+.preserve-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* Smooth Scrolling Anchor adjustments */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Premium Focus indicators */
+.focus-ring:focus-visible {
+  outline: none;
+  ring: 2px;
+  ring-color: #ce8852;
+  ring-offset: 2px;
+  ring-offset-color: #020617;
+}

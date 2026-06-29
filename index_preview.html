@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verve Medical — Private. Medical. Delivered.</title>
+  <meta name="description" content="Get a private consultation and FDA-approved ED treatment delivered discreetly to your door. HIPAA compliant and US-licensed doctors.">
+  
+  <!-- Font stacks -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              copper: {
+                50: '#fbf5ef',
+                100: '#f5e7da',
+                200: '#ecd0b3',
+                300: '#dfb083',
+                400: '#ce8852',
+                500: '#c26e38',
+                600: '#b45a2d',
+                700: '#964626',
+                800: '#793922',
+                900: '#62301f',
+                950: '#35160d',
+              },
+              cream: {
+                50: '#fdfcf7',
+                100: '#faf7ed',
+                200: '#f3edd6',
+                300: '#e7dcb4',
+                400: '#d7c48b',
+                500: '#c5ab63',
+                600: '#b59451',
+                700: '#977541',
+                800: '#7c5e37',
+                900: '#664c30',
+                950: '#3b2919',
+              }
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+    .preserve-3d {
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-copper-500 selection:text-white min-h-screen flex flex-col">
+
+  <!-- ================= SECTION 0: TOP NAV (Persistent with smart hide) ================= -->
+  <div id="navbar-container" class="fixed top-0 left-0 right-0 z-40 transition-transform duration-300 ease-in-out">
+    
+    <!-- Top Trust strip -->
+    <div class="bg-slate-900 border-b border-slate-800/60 py-2 px-4 text-center">
+      <div class="max-w-7xl mx-auto flex items-center justify-center space-x-6 text-[10px] md:text-xs font-semibold tracking-wider text-slate-400">
+        <span class="flex items-center space-x-1.5">
+          <i data-lucide="lock" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span>HIPAA Compliant</span>
+        </span>
+        <span class="h-3 w-px bg-slate-800"></span>
+        <span class="flex items-center space-x-1.5">
+          <i data-lucide="truck" class="w-3.5 h-3.5 text-brand-copper-400"></i>
+          <span>Discreet Shipping</span>
+        </span>
+        <span class="h-3 w-px bg-slate-800"></span>
+        <span class="flex items-center space-x-1.5">
+          <i data-lucide="shield" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span>Licensed US Doctors</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Primary Nav Header -->
+    <nav class="bg-slate-950/80 backdrop-blur-md border-b border-slate-900/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        
+        <!-- Logo + tagline -->
+        <div class="flex items-center space-x-3">
+          <span class="font-serif text-lg md:text-xl font-bold tracking-[0.2em] text-slate-100 uppercase">
+            Verve
+          </span>
+          <span class="hidden md:inline-block h-4 w-px bg-slate-800"></span>
+          <span class="hidden md:inline-block text-[10px] font-medium tracking-widest text-slate-500 uppercase">
+            Private. Medical. Delivered.
+          </span>
+        </div>
+
+        <!-- Links -->
+        <div class="hidden lg:flex items-center space-x-8 text-xs font-semibold tracking-wider text-slate-400 uppercase">
+          <a href="#how-it-works" class="hover:text-brand-copper-400 transition-colors">How It Works</a>
+          <a href="#treatments" class="hover:text-brand-copper-400 transition-colors">Treatments</a>
+          <a href="#pricing-plans" class="hover:text-brand-copper-400 transition-colors">Pricing</a>
+          <a href="#testimonials" class="hover:text-brand-copper-400 transition-colors">Reviews</a>
+        </div>
+
+        <!-- CTA button -->
+        <div class="hidden lg:block">
+          <button onclick="openWizard()" class="px-5 py-2.5 bg-brand-copper-500 hover:bg-brand-copper-600 active:scale-[0.98] text-white text-xs font-bold tracking-wider uppercase rounded-xl transition-all shadow-md shadow-brand-copper-950/20">
+            Get Started
+          </button>
+        </div>
+
+        <!-- Mobile hamburger -->
+        <div class="lg:hidden">
+          <button id="mobile-menu-btn" class="p-2 text-slate-400 hover:text-slate-200 transition-colors focus:outline-none" aria-label="Toggle Navigation Menu">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile panel -->
+      <div id="mobile-nav-panel" class="hidden lg:hidden border-t border-slate-900 bg-slate-950/95 py-4 px-6 space-y-4 shadow-xl">
+        <div class="flex flex-col space-y-3 font-semibold text-xs tracking-widest text-slate-400 uppercase">
+          <a href="#how-it-works" onclick="closeMobileMenu()" class="py-2.5 border-b border-slate-900/50 hover:text-brand-copper-400 transition-colors">How It Works</a>
+          <a href="#treatments" onclick="closeMobileMenu()" class="py-2.5 border-b border-slate-900/50 hover:text-brand-copper-400 transition-colors">Treatments</a>
+          <a href="#pricing-plans" onclick="closeMobileMenu()" class="py-2.5 border-b border-slate-900/50 hover:text-brand-copper-400 transition-colors">Pricing</a>
+          <a href="#testimonials" onclick="closeMobileMenu()" class="py-2.5 border-b border-slate-900/50 hover:text-brand-copper-400 transition-colors">Reviews</a>
+        </div>
+        <div class="pt-2">
+          <button onclick="closeMobileMenu(); openWizard();" class="w-full py-3 bg-brand-copper-500 hover:bg-brand-copper-600 text-white text-xs font-bold tracking-wider uppercase rounded-xl transition-all text-center shadow-lg">
+            Start Consultation
+          </button>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="h-[96px] md:h-[104px]"></div>
+
+  <!-- ================= SECTION 1: HERO ================= -->
+  <section class="relative overflow-hidden py-12 md:py-24 bg-slate-950">
+    <div class="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-copper-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-96 h-96 bg-brand-cream-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left panel -->
+        <div class="lg:col-span-7 text-left space-y-6 md:space-y-8">
+          <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300 tracking-wider">
+            <span class="flex h-2 w-2 relative">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span>Trusted by 50,000+ men across the US</span>
+          </div>
+
+          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-100 leading-[1.1] max-w-xl">
+            Feel Like <span class="text-brand-copper-400 italic">Yourself</span> Again.
+          </h1>
+
+          <p class="font-sans text-base sm:text-lg text-slate-350 max-w-lg leading-relaxed">
+            ED is common, treatable, and nothing to be ashamed of. Get a private consultation and FDA-approved treatment — delivered discreetly to your door.
+          </p>
+
+          <div class="space-y-3.5 max-w-md">
+            <button onclick="openWizard()" class="w-full sm:w-auto px-8 py-4 bg-brand-copper-500 hover:bg-brand-copper-600 active:scale-[0.99] text-white text-sm font-bold tracking-wider uppercase rounded-2xl transition-all shadow-xl shadow-brand-copper-950/40 hover:shadow-brand-copper-950/60 block text-center">
+              Start My Private Consultation
+            </button>
+            <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-400 font-medium">
+              <span>⚡ Takes 3 minutes</span>
+              <span class="hidden sm:inline text-slate-700">•</span>
+              <span>🛡️ No insurance needed</span>
+              <span class="hidden sm:inline text-slate-700">•</span>
+              <span>📦 Ships in a plain box</span>
+            </div>
+          </div>
+
+          <div class="w-full h-px bg-slate-900 my-8"></div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
+            <div class="flex items-center space-x-2 px-3 py-2 bg-slate-900/40 border border-slate-900 rounded-xl hover:border-slate-800 transition-colors">
+              <i data-lucide="lock" class="w-4 h-4 text-brand-copper-400 shrink-0"></i>
+              <span class="text-xs text-slate-300 font-semibold">HIPAA Secure</span>
+            </div>
+            <div class="flex items-center space-x-2 px-3 py-2 bg-slate-900/40 border border-slate-900 rounded-xl hover:border-slate-800 transition-colors">
+              <i data-lucide="truck" class="w-4 h-4 text-brand-copper-400 shrink-0"></i>
+              <span class="text-xs text-slate-300 font-semibold">Plain Packaging</span>
+            </div>
+            <div class="flex items-center space-x-2 px-3 py-2 bg-slate-900/40 border border-slate-900 rounded-xl hover:border-slate-800 transition-colors">
+              <i data-lucide="shield-check" class="w-4 h-4 text-brand-copper-400 shrink-0"></i>
+              <span class="text-xs text-slate-300 font-semibold">US-Licensed MDs</span>
+            </div>
+            <div class="flex items-center space-x-2 px-3 py-2 bg-slate-900/40 border border-slate-900 rounded-xl hover:border-slate-800 transition-colors">
+              <i data-lucide="sparkles" class="w-4 h-4 text-brand-copper-400 shrink-0"></i>
+              <span class="text-xs text-slate-300 font-semibold">FDA-Approved Rx</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right panel -->
+        <div class="lg:col-span-5 relative w-full aspect-square max-w-md mx-auto lg:max-w-none">
+          <div class="absolute inset-0 bg-slate-900 border border-slate-800/80 rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-between p-6">
+            
+            <div class="flex justify-between items-center w-full z-20">
+              <div class="flex items-center space-x-2">
+                <div class="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
+                <span class="text-[10px] uppercase font-bold tracking-widest text-slate-400">Clinical Verification</span>
+              </div>
+              <div class="px-2 py-0.5 bg-brand-copper-500/20 text-brand-copper-400 border border-brand-copper-500/30 rounded text-[9px] font-bold uppercase tracking-wider">
+                Approved Rx
+              </div>
+            </div>
+
+            <!-- 3D Scene Wrapper -->
+            <div class="flex-grow flex items-center justify-center relative w-full overflow-hidden my-4 group">
+              
+              <!-- 1. Real Lifestyle Image Frame (Usage context: holding glass of water in sunlit setting) -->
+              <div class="absolute inset-0 w-full h-full rounded-2xl overflow-hidden border border-slate-800/60 pointer-events-none">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-slate-950/20 z-10"></div>
+                <img 
+                  src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800" 
+                  alt="Confident man holding a glass of water representing product usage" 
+                  class="w-full h-full object-cover object-center filter saturate-75 brightness-[0.7] group-hover:scale-105 transition-transform duration-1000"
+                />
+              </div>
+
+              <!-- 2. Interactive 3D Cardboard/Amber Pill Bottle Mockup -->
+              <div class="relative z-20 transform group-hover:scale-110 transition-transform duration-500 ease-out flex flex-col items-center">
+                
+                {/* Under Bottle Shadow */}
+                <div class="absolute -bottom-2 w-20 h-3 bg-black/60 rounded-full blur-sm"></div>
+
+                {/* Ribbed Metallic Copper Lid */}
+                <div class="w-16 h-4 bg-gradient-to-r from-brand-copper-600 via-brand-copper-300 to-brand-copper-600 rounded-t-md border-b border-brand-copper-750 shadow-md -mb-0.5 relative z-30"></div>
+                <div class="w-14 h-1.5 bg-brand-copper-700/60 rounded-t-sm mx-auto -mb-0.5"></div>
+
+                {/* Amber Glass Cylinder Body */}
+                <div class="w-20 h-32 bg-gradient-to-b from-amber-800/80 via-amber-900/90 to-amber-950/95 border border-amber-700/20 rounded-2xl relative shadow-inner overflow-hidden flex flex-col justify-center items-center">
+                  
+                  {/* Glass Reflection Highlight */}
+                  <div class="absolute top-0 bottom-0 left-2 w-1 bg-white/10 rounded-full blur-[0.5px]"></div>
+                  <div class="absolute top-2 right-2 w-1.5 h-12 bg-white/5 rounded-full filter blur-[1px]"></div>
+
+                  {/* Dark Grey Matte Label wrapper */}
+                  <div class="w-full py-2 bg-slate-955/90 border-y border-slate-900/60 flex flex-col items-center space-y-0.5">
+                    <span class="text-[5px] uppercase font-bold tracking-widest text-slate-500">PRESCRIPTION</span>
+                    <span class="text-[10px] font-serif font-black tracking-[0.2em] text-brand-copper-400 uppercase">VERVE</span>
+                    <span class="text-[5px] text-emerald-400 font-bold uppercase tracking-wider">Sildenafil Rx</span>
+                  </div>
+
+                  {/* Faint Pills visible inside semi-transparent amber container */}
+                  <div class="absolute bottom-3 flex space-x-1 opacity-20">
+                    <div class="w-3.5 h-1.5 bg-brand-copper-500 rounded-full transform rotate-12"></div>
+                    <div class="w-3.5 h-1.5 bg-brand-copper-600 rounded-full transform -rotate-45"></div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- 3. Floating 3D Copper Pills -->
+              <!-- Pill 1: Top Left -->
+              <div class="absolute top-1/4 left-10 z-30 transform -rotate-[35deg] animate-bounce pointer-events-none" style="animation-duration: 3s">
+                <div class="w-7 h-3 bg-gradient-to-tr from-brand-copper-500 to-brand-copper-300 rounded-full shadow-[0_0_12px_rgba(206,136,82,0.4)] border border-brand-copper-400/20"></div>
+                <div class="w-3.5 h-[1.5px] bg-white/20 rounded-full mt-[-2px] mx-auto filter blur-[0.5px]"></div>
+              </div>
+
+              <!-- Pill 2: Bottom Right -->
+              <div class="absolute bottom-1/4 right-8 z-30 transform rotate-[45deg] animate-pulse pointer-events-none" style="animation-duration: 4s">
+                <div class="w-7 h-3 bg-gradient-to-tr from-brand-copper-500 to-brand-copper-300 rounded-full shadow-[0_0_12px_rgba(206,136,82,0.4)] border border-brand-copper-400/20"></div>
+                <div class="w-3.5 h-[1.5px] bg-white/20 rounded-full mt-[-2px] mx-auto filter blur-[0.5px]"></div>
+              </div>
+
+              <!-- Pill 3: Mid Left -->
+              <div class="absolute bottom-1/3 left-6 z-30 transform rotate-[15deg] animate-bounce pointer-events-none" style="animation-duration: 5s">
+                <div class="w-7 h-3 bg-gradient-to-tr from-brand-copper-500 to-brand-copper-300 rounded-full shadow-[0_0_12px_rgba(206,136,82,0.3)] border border-brand-copper-400/20"></div>
+              </div>
+
+            </div>
+
+            <!-- Graphic Footer -->
+            <div class="bg-slate-950/80 border border-slate-850 rounded-2xl p-4 flex items-center justify-between z-20">
+              <div class="flex items-center space-x-2.5">
+                <i data-lucide="activity" class="w-4 h-4 text-brand-copper-400 animate-pulse"></i>
+                <div class="space-y-0.5">
+                  <p class="text-[10px] font-bold text-slate-400 tracking-wider uppercase">Active Treatment Efficacy</p>
+                  <p class="text-xs font-semibold text-slate-200">Take with water 30 min before intimacy</p>
+                </div>
+              </div>
+              <button onclick="openWizard()" class="px-3 py-1.5 rounded-lg bg-brand-copper-500 hover:bg-brand-copper-600 text-white text-[10px] font-bold uppercase tracking-wider transition-all">
+                Match
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 2: TRUST STRIP ================= -->
+  <section class="bg-brand-cream-100/90 text-slate-950 py-12 md:py-16 border-y border-brand-cream-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        <div class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-3">
+          <div class="w-12 h-12 rounded-2xl bg-brand-copper-500/10 border border-brand-copper-500/20 text-brand-copper-600 flex items-center justify-center">
+            <i data-lucide="user-check" class="w-6 h-6"></i>
+          </div>
+          <div class="space-y-1">
+            <h3 class="font-sans font-bold text-sm tracking-wide text-slate-900 uppercase">Licensed US Physicians</h3>
+            <p class="text-xs text-slate-600 leading-relaxed max-w-[240px]">Board-certified doctors review every case. Safe, professional clinical assessment.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-3">
+          <div class="w-12 h-12 rounded-2xl bg-brand-copper-500/10 border border-brand-copper-500/20 text-brand-copper-600 flex items-center justify-center">
+            <i data-lucide="alert-circle" class="w-6 h-6"></i>
+          </div>
+          <div class="space-y-1">
+            <h3 class="font-sans font-bold text-sm tracking-wide text-slate-900 uppercase">FDA-Approved Treatments</h3>
+            <p class="text-xs text-slate-600 leading-relaxed max-w-[240px]">Sildenafil, Tadalafil — the same clinically proven medications doctors prescribe.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-3">
+          <div class="w-12 h-12 rounded-2xl bg-brand-copper-500/10 border border-brand-copper-500/20 text-brand-copper-600 flex items-center justify-center">
+            <i data-lucide="lock" class="w-5 h-5"></i>
+          </div>
+          <div class="space-y-1">
+            <h3 class="font-sans font-bold text-sm tracking-wide text-slate-900 uppercase">HIPAA-Compliant Platform</h3>
+            <p class="text-xs text-slate-600 leading-relaxed max-w-[240px]">Your health data is securely encrypted. We keep your information private. Always.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-3">
+          <div class="w-12 h-12 rounded-2xl bg-brand-copper-500/10 border border-brand-copper-500/20 text-brand-copper-600 flex items-center justify-center">
+            <i data-lucide="shield-check" class="w-6 h-6"></i>
+          </div>
+          <div class="space-y-1">
+            <h3 class="font-sans font-bold text-sm tracking-wide text-slate-900 uppercase">Discreet Delivery</h3>
+            <p class="text-xs text-slate-600 leading-relaxed max-w-[240px]">Ships in unmarked packaging. Billed anonymously as "VM Health Products" on statements.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 3: NORMALIZATION ================= -->
+  <section class="bg-slate-950 py-16 md:py-24 relative overflow-hidden border-t border-slate-900/60">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-brand-copper-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-12">
+      <div class="max-w-2xl mx-auto space-y-4">
+        <h2 class="font-serif text-3xl md:text-4xl font-semibold tracking-tight text-slate-100">You're Not Alone.</h2>
+        <p class="font-sans text-sm md:text-base text-slate-400 leading-relaxed">
+          ED affects 1 in 3 men over 40 — and is one of the most treatable, medically understood conditions in men's health.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto pt-4">
+        <div class="p-6 md:p-8 rounded-2xl bg-slate-900/40 border border-slate-900 hover:border-slate-800 hover:-translate-y-1 transition-all duration-300 group text-center space-y-3">
+          <span class="block font-serif text-5xl md:text-6xl font-black text-brand-copper-400 group-hover:text-brand-copper-300 transition-colors">52%</span>
+          <h3 class="text-xs uppercase font-bold tracking-wider text-slate-500">Clinical Prevalency</h3>
+          <p class="text-xs text-slate-400 leading-relaxed max-w-[200px] mx-auto">of men between 40–70 experience some form of ED.</p>
+        </div>
+
+        <div class="p-6 md:p-8 rounded-2xl bg-slate-900/40 border border-slate-900 hover:border-slate-800 hover:-translate-y-1 transition-all duration-300 group text-center space-y-3">
+          <span class="block font-serif text-5xl md:text-6xl font-black text-brand-copper-400 group-hover:text-brand-copper-300 transition-colors">95%</span>
+          <h3 class="text-xs uppercase font-bold tracking-wider text-slate-500">Efficacy Probability</h3>
+          <p class="text-xs text-slate-400 leading-relaxed max-w-[200px] mx-auto">of ED cases have clinically effective treatment options.</p>
+        </div>
+
+        <div class="p-6 md:p-8 rounded-2xl bg-slate-900/40 border border-slate-900 hover:border-slate-800 hover:-translate-y-1 transition-all duration-300 group text-center space-y-3">
+          <span class="block font-serif text-5xl md:text-6xl font-black text-brand-copper-400 group-hover:text-brand-copper-300 transition-colors">3 min</span>
+          <h3 class="text-xs uppercase font-bold tracking-wider text-slate-500">Consultation Speed</h3>
+          <p class="text-xs text-slate-400 leading-relaxed max-w-[200px] mx-auto">average time to complete your private health questionnaire.</p>
+        </div>
+      </div>
+
+      <div class="space-y-4 pt-6">
+        <p class="text-sm font-medium text-slate-300 italic">"The hardest part is starting. We've made that easy."</p>
+        <a href="#how-it-works" class="inline-flex items-center space-x-2 text-xs font-bold tracking-widest text-brand-copper-400 hover:text-brand-copper-300 uppercase transition-colors">
+          <span>See How It Works</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 4: HOW IT WORKS ================= -->
+  <section id="how-it-works" class="bg-slate-900/60 border-y border-slate-900 py-16 md:py-24 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
+      <div class="text-center space-y-4">
+        <h2 class="font-serif text-3xl md:text-4xl font-semibold tracking-tight text-slate-100">Private Care in 3 Steps</h2>
+        <p class="font-sans text-sm text-slate-400 max-w-lg mx-auto">Our medical process is fully digital, safe, and designed to fit your schedule.</p>
+      </div>
+
+      <div class="relative">
+        <!-- Connecting Line Desktop -->
+        <div class="hidden lg:block absolute top-[68px] left-[15%] right-[15%] h-0.5 bg-slate-800 pointer-events-none">
+          <div id="step-connector-line" class="h-full bg-gradient-to-r from-brand-copper-500 to-brand-copper-300 w-[15%] transition-all duration-700 ease-out"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8 relative z-10">
+          <div onmouseenter="updateStepLine(1)" onmouseleave="resetStepLine()" class="flex flex-col items-center text-center space-y-4 group cursor-pointer">
+            <div class="relative">
+              <div class="absolute -inset-2 rounded-2xl bg-brand-copper-500/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="w-20 h-20 rounded-2xl border bg-slate-950 border-slate-800 text-slate-400 group-hover:border-brand-copper-400 group-hover:text-brand-copper-400 flex items-center justify-center relative z-10 transition-all duration-300">
+                <i data-lucide="clipboard-list" class="w-8 h-8"></i>
+                <span class="absolute -top-1.5 -right-1.5 px-1.5 py-0.5 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-bold text-brand-copper-400 tracking-wider">01</span>
+              </div>
+            </div>
+            <div class="space-y-2 max-w-xs">
+              <h3 class="font-serif text-lg font-bold text-slate-200 group-hover:text-brand-copper-300 transition-colors">Answer a Few Questions</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">Complete a short, private health questionnaire. Your clinical history is reviewed safely by a licensed physician.</p>
+            </div>
+          </div>
+
+          <div onmouseenter="updateStepLine(2)" onmouseleave="resetStepLine()" class="flex flex-col items-center text-center space-y-4 group cursor-pointer">
+            <div class="relative">
+              <div class="absolute -inset-2 rounded-2xl bg-brand-copper-500/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="w-20 h-20 rounded-2xl border bg-slate-950 border-slate-800 text-slate-400 group-hover:border-brand-copper-400 group-hover:text-brand-copper-400 flex items-center justify-center relative z-10 transition-all duration-300">
+                <i data-lucide="stethoscope" class="w-8 h-8"></i>
+                <span class="absolute -top-1.5 -right-1.5 px-1.5 py-0.5 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-bold text-brand-copper-400 tracking-wider">02</span>
+              </div>
+            </div>
+            <div class="space-y-2 max-w-xs">
+              <h3 class="font-serif text-lg font-bold text-slate-200 group-hover:text-brand-copper-300 transition-colors">Doctor Reviews & Prescribes</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">A US-licensed doctor reviews your health profile and, if clinically appropriate, issues a prescription same-day.</p>
+            </div>
+          </div>
+
+          <div onmouseenter="updateStepLine(3)" onmouseleave="resetStepLine()" class="flex flex-col items-center text-center space-y-4 group cursor-pointer">
+            <div class="relative">
+              <div class="absolute -inset-2 rounded-2xl bg-brand-copper-500/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="w-20 h-20 rounded-2xl border bg-slate-950 border-slate-800 text-slate-400 group-hover:border-brand-copper-400 group-hover:text-brand-copper-400 flex items-center justify-center relative z-10 transition-all duration-300">
+                <i data-lucide="package" class="w-8 h-8"></i>
+                <span class="absolute -top-1.5 -right-1.5 px-1.5 py-0.5 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-bold text-brand-copper-400 tracking-wider">03</span>
+              </div>
+            </div>
+            <div class="space-y-2 max-w-xs">
+              <h3 class="font-serif text-lg font-bold text-slate-200 group-hover:text-brand-copper-300 transition-colors">Delivered to Your Door</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">Your treatment ships in plain, unmarked packaging. No awkward pharmacy queues or doctor office waiting rooms.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center space-y-3 pt-4">
+        <button onclick="openWizard()" class="w-full sm:w-auto px-8 py-3.5 bg-brand-copper-500 hover:bg-brand-copper-600 active:scale-[0.99] text-white text-xs font-bold tracking-wider uppercase rounded-xl transition-all shadow-md shadow-brand-copper-950/20">
+          Start My Consultation
+        </button>
+        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">✓ Free to start</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 5: TREATMENT OPTIONS ================= -->
+  <section id="treatments" class="bg-slate-950 py-16 md:py-24 border-t border-slate-900/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="text-center space-y-4">
+        <span class="text-[10px] uppercase font-bold tracking-widest text-brand-copper-400">Your Treatment Options</span>
+        <h2 class="font-serif text-3xl md:text-4xl font-semibold tracking-tight text-slate-100">Clinically Proven. Personally Matched.</h2>
+        <p class="font-sans text-sm text-slate-400 max-w-lg mx-auto">Every prescription is safely reviewed by a licensed doctor and custom-tailored to your exact health profile.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Card 1 -->
+        <div onclick="selectTreatmentCard(0)" id="t-card-0" class="cursor-pointer relative p-6 md:p-8 rounded-3xl border transition-all duration-300 flex flex-col justify-between space-y-6 border-brand-copper-400 bg-brand-copper-950/20 shadow-xl shadow-brand-copper-950/10">
+          <div class="flex justify-between items-start">
+            <div class="space-y-0.5">
+              <span class="text-xs font-bold text-brand-copper-400 tracking-wider block">FDA-Approved Rx</span>
+              <h3 class="font-serif text-2xl font-bold text-slate-100">Sildenafil</h3>
+              <p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Generic Viagra</p>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-[9px] font-bold bg-brand-copper-500/20 text-brand-copper-300 border border-brand-copper-500/30 tracking-wider uppercase">Most Popular</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed flex-grow">Fast-acting, taken as needed. Works in 30–60 minutes and helps you maintain clinical readiness when the moment arises.</p>
+          <div class="space-y-2 border-t border-slate-905 pt-4 text-xs">
+            <div class="flex items-center space-x-2 text-slate-355">
+              <i data-lucide="activity" class="w-3.5 h-3.5 text-brand-copper-400 shrink-0"></i>
+              <span>Effective for up to 4–6 hours</span>
+            </div>
+            <div class="flex items-center space-x-2 text-slate-355">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400 shrink-0"></i>
+              <span>Take as needed (20mg to 100mg)</span>
+            </div>
+          </div>
+          <div class="pt-2 flex items-center justify-between border-t border-slate-905 mt-4">
+            <div class="space-y-0.5">
+              <p class="text-[9px] uppercase font-bold tracking-wider text-slate-500">Starting at</p>
+              <p class="text-lg font-serif font-black text-slate-100">From $24/month</p>
+            </div>
+            <div id="t-card-check-0" class="w-6 h-6 rounded-full border border-brand-copper-400 bg-brand-copper-400 text-white flex items-center justify-center transition-all">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div onclick="selectTreatmentCard(1)" id="t-card-1" class="cursor-pointer relative p-6 md:p-8 rounded-3xl border border-slate-900 hover:border-slate-800 bg-slate-900/30 transition-all duration-300 flex flex-col justify-between space-y-6">
+          <div class="flex justify-between items-start">
+            <div class="space-y-0.5">
+              <span class="text-xs font-bold text-brand-copper-400 tracking-wider block">FDA-Approved Rx</span>
+              <h3 class="font-serif text-2xl font-bold text-slate-100">Tadalafil</h3>
+              <p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Generic Cialis</p>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-[9px] font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20 tracking-wider uppercase font-semibold">Spontaneity</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed flex-grow">Low-dose daily option. Helps maintain therapeutic levels in your system so you are always ready, without timing constraints.</p>
+          <div class="space-y-2 border-t border-slate-905 pt-4 text-xs">
+            <div class="flex items-center space-x-2 text-slate-355">
+              <i data-lucide="activity" class="w-3.5 h-3.5 text-brand-copper-400 shrink-0"></i>
+              <span>Always active in system (24/7)</span>
+            </div>
+            <div class="flex items-center space-x-2 text-slate-355">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400 shrink-0"></i>
+              <span>Daily low-dose (2.5mg to 5mg)</span>
+            </div>
+          </div>
+          <div class="pt-2 flex items-center justify-between border-t border-slate-905 mt-4">
+            <div class="space-y-0.5">
+              <p class="text-[9px] uppercase font-bold tracking-wider text-slate-500">Starting at</p>
+              <p class="text-lg font-serif font-black text-slate-100">From $28/month</p>
+            </div>
+            <div id="t-card-check-1" class="w-6 h-6 rounded-full border border-slate-800 text-transparent flex items-center justify-center transition-all">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div onclick="selectTreatmentCard(2)" id="t-card-2" class="cursor-pointer relative p-6 md:p-8 rounded-3xl border border-slate-900 hover:border-slate-800 bg-slate-900/30 transition-all duration-300 flex flex-col justify-between space-y-6">
+          <div class="flex justify-between items-start">
+            <div class="space-y-0.5">
+              <span class="text-xs font-bold text-brand-copper-400 tracking-wider block">Physician-Formulated</span>
+              <h3 class="font-serif text-2xl font-bold text-slate-100">Combination</h3>
+              <p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Verve Custom Compound</p>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-[9px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 tracking-wider uppercase font-semibold">Premium</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed flex-grow">Custom-compounded lozenge combining Sildenafil & Tadalafil for rapid sublingual absorption and extended efficacy.</p>
+          <div class="space-y-2 border-t border-slate-905 pt-4 text-xs">
+            <div class="flex items-center space-x-2 text-slate-355">
+              <i data-lucide="activity" class="w-3.5 h-3.5 text-brand-copper-400 shrink-0"></i>
+              <span>Fast onset + up to 24hr window</span>
+            </div>
+            <div class="flex items-center space-x-2 text-slate-355">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400 shrink-0"></i>
+              <span>As-needed quick-melt lozenge</span>
+            </div>
+          </div>
+          <div class="pt-2 flex items-center justify-between border-t border-slate-905 mt-4">
+            <div class="space-y-0.5">
+              <p class="text-[9px] uppercase font-bold tracking-wider text-slate-500">Starting at</p>
+              <p class="text-lg font-serif font-black text-slate-100">From $45/month</p>
+            </div>
+            <div id="t-card-check-2" class="w-6 h-6 rounded-full border border-slate-800 text-transparent flex items-center justify-center transition-all">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature table matrix -->
+      <div class="max-w-4xl mx-auto bg-slate-900/40 border border-slate-900 rounded-3xl p-6 md:p-8 space-y-6">
+        <h4 class="font-serif text-lg font-semibold text-slate-200 text-center md:text-left">Treatment Match Matrix</h4>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="border-b border-slate-800 text-slate-500 font-bold uppercase tracking-wider">
+                <th class="pb-3 pr-4 font-semibold">Clinical Factor</th>
+                <th class="pb-3 px-4 font-semibold">Sildenafil</th>
+                <th class="pb-3 px-4 font-semibold">Tadalafil</th>
+                <th class="pb-3 pl-4 font-semibold">Combo Formula</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/50 text-slate-300">
+              <tr>
+                <td class="py-3.5 pr-4 font-medium text-slate-400">Onset Timing</td>
+                <td class="py-3.5 px-4">30–60 minutes before</td>
+                <td class="py-3.5 px-4">1–2 hours before</td>
+                <td class="py-3.5 pl-4 font-semibold text-brand-copper-300">15–20 minutes (Sublingual)</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 pr-4 font-medium text-slate-400">Active Window</td>
+                <td class="py-3.5 px-4">Up to 4–6 hours</td>
+                <td class="py-3.5 px-4 font-semibold text-emerald-400">Up to 36 hours</td>
+                <td class="py-3.5 pl-4">Up to 24 hours</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 pr-4 font-medium text-slate-400">Administration</td>
+                <td class="py-3.5 px-4">As-needed, empty stomach</td>
+                <td class="py-3.5 px-4">Daily low-dose, any time</td>
+                <td class="py-3.5 pl-4">As-needed, quick-dissolve</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 pr-4 font-medium text-slate-400">Ideal For</td>
+                <td class="py-3.5 px-4">Planned intimacy sessions</td>
+                <td class="py-3.5 px-4">Full spontaneity, high frequency</td>
+                <td class="py-3.5 pl-4">Maximum clinical response</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="text-center space-y-4 max-w-md mx-auto pt-4">
+        <p class="text-xs text-slate-400 leading-relaxed font-medium">Not sure which treatment matches your physiology? Your assigned physician will review your medical history and recommend the best clinical match.</p>
+        <button onclick="openWizard()" class="w-full sm:w-auto px-8 py-3.5 bg-brand-copper-500 hover:bg-brand-copper-600 active:scale-[0.99] text-white text-xs font-bold tracking-wider uppercase rounded-xl transition-all shadow-md shadow-brand-copper-950/20">
+          Find My Treatment
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 6: CLINICAL PROOF ================= -->
+  <section class="bg-slate-900/40 py-16 md:py-24 border-t border-slate-900/60 relative overflow-hidden">
+    <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-brand-copper-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left panel -->
+        <div class="lg:col-span-7 space-y-8 text-left">
+          <div class="space-y-4">
+            <span class="text-[10px] uppercase font-bold tracking-widest text-brand-copper-400">Clinical Evidence</span>
+            <h2 class="font-serif text-3xl md:text-4xl font-semibold tracking-tight text-slate-100 max-w-lg">Backed by Science. Trusted by Doctors.</h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2">
+            <div class="space-y-2 border-l border-brand-copper-500/30 pl-4 py-1">
+              <span class="block font-serif text-3xl md:text-4xl font-black text-slate-100">82%</span>
+              <p class="text-[10px] uppercase font-bold tracking-wider text-slate-400">Significant Efficacy</p>
+              <p class="text-[11px] text-slate-500 leading-normal">of men report major improvement in hardness within 4 weeks.</p>
+            </div>
+            <div class="space-y-2 border-l border-brand-copper-500/30 pl-4 py-1">
+              <span class="block font-serif text-3xl md:text-4xl font-black text-slate-100">4.8/5</span>
+              <p class="text-[10px] uppercase font-bold tracking-wider text-slate-400">Satisfaction Score</p>
+              <p class="text-[11px] text-slate-500 leading-normal">average clinical outcome rating across 12,400+ patients.</p>
+            </div>
+            <div class="space-y-2 border-l border-brand-copper-500/30 pl-4 py-1">
+              <span class="block font-serif text-3xl md:text-4xl font-black text-slate-100">10M+</span>
+              <p class="text-[10px] uppercase font-bold tracking-wider text-slate-400">Annual Prescriptions</p>
+              <p class="text-[11px] text-slate-500 leading-normal">sildenafil & tadalafil treatments filled annually in the US.</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-950/60 border border-slate-900 rounded-2xl p-6 relative">
+            <p class="font-sans text-xs md:text-sm text-slate-300 leading-relaxed italic">
+              "Sildenafil and tadalafil are among the most studied and clinically validated treatments in men's health. The evidence for their efficacy, safety profile, and quality-of-life benefits is overwhelming."
+            </p>
+            <div class="mt-4 flex items-center space-x-3">
+              <div class="space-y-0.5">
+                <p class="text-xs font-bold text-slate-200">Dr. Marcus Vance, MD</p>
+                <p class="text-[10px] text-brand-copper-400 font-bold uppercase tracking-wider">Board-Certified Urologist, Medical Director</p>
+              </div>
+            </div>
+          </div>
+          <p class="text-[10px] text-slate-600 italic">*Individual results may vary. Prescription is required and subject to physician review.</p>
+        </div>
+
+        <!-- Right panel -->
+        <div class="lg:col-span-5 w-full max-w-sm mx-auto">
+          <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 relative overflow-hidden shadow-xl">
+            <div class="absolute -bottom-10 -right-10 w-40 h-40 opacity-5 text-slate-400">
+              <i data-lucide="award" class="w-full h-full"></i>
+            </div>
+
+            <div class="flex items-center space-x-3 mb-6">
+              <div class="w-16 h-16 rounded-2xl bg-brand-copper-950/30 border border-brand-copper-500/20 flex items-center justify-center text-brand-copper-400 shrink-0">
+                <svg class="w-10 h-10" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M50 45 C56 45 61 40 61 34 C61 28 56 23 50 23 C44 23 39 28 39 34 C39 40 44 45 50 45 Z" fill="#ce8852" />
+                  <path d="M26 77 C26 65 37 57 50 57 C63 57 74 65 74 77 H26 Z" fill="#ce8852" fill-opacity="0.8" />
+                  <circle cx="50" cy="50" r="45" stroke="#ce8852" stroke-width="2" stroke-opacity="0.2" />
+                  <path d="M35 50 C35 62 65 62 65 50" stroke="#ce8852" stroke-width="3" stroke-linecap="round" />
+                  <path d="M50 58 V66" stroke="#ce8852" stroke-width="3" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-serif text-lg font-bold text-slate-100">Dr. Marcus Vance</h3>
+                <p class="text-[10px] text-brand-copper-400 font-bold uppercase tracking-wider">Medical Director</p>
+              </div>
+            </div>
+
+            <div class="space-y-4 relative z-10 text-xs">
+              <div class="flex items-start space-x-3 py-3 border-t border-slate-800/60">
+                <i data-lucide="graduation-cap" class="w-4 h-4 text-brand-copper-400 shrink-0 mt-0.5"></i>
+                <div>
+                  <h4 class="font-bold text-slate-300">Academic Background</h4>
+                  <p class="text-slate-400 mt-0.5 leading-relaxed">MD from Stanford University School of Medicine. Residency in Urology at Johns Hopkins Hospital.</p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-3 py-3 border-t border-slate-800/60">
+                <i data-lucide="award" class="w-4 h-4 text-brand-copper-400 shrink-0 mt-0.5"></i>
+                <div>
+                  <h4 class="font-bold text-slate-300">Certifications</h4>
+                  <p class="text-slate-400 mt-0.5 leading-relaxed">Diplomate, American Board of Urology. Active medical license in 48 US states.</p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-3 py-3 border-t border-slate-800/60 border-b border-slate-800/60">
+                <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                <div>
+                  <h4 class="font-bold text-slate-300">Clinical Focus</h4>
+                  <p class="text-slate-400 mt-0.5 leading-relaxed">20+ years of clinical practice focusing on male reproductive endocrinology and wellness therapies.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 flex items-center justify-between text-[9px] uppercase font-bold tracking-wider text-slate-500">
+              <span>Registration #49281-A</span>
+              <span class="text-emerald-400 flex items-center space-x-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Licensed Practitioner</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 7: TESTIMONIALS ================= -->
+  <section id="testimonials" class="bg-slate-950 py-16 md:py-24 border-t border-slate-900/60 relative overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-copper-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
+      <div class="text-center space-y-4">
+        <span class="text-[10px] uppercase font-bold tracking-widest text-brand-copper-400">Real Men. Real Results.</span>
+        <h2 class="font-serif text-3xl md:text-4xl font-semibold tracking-tight text-slate-100">They Took the First Step. So Can You.</h2>
+        <p class="font-sans text-sm text-slate-400 max-w-lg mx-auto">Read experiences from verified patients who reclaimed their intimacy, confidence, and relationship health.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="p-6 md:p-8 rounded-3xl bg-slate-900/30 border border-slate-900 hover:border-slate-800 hover:-translate-y-1 transition-all duration-350 flex flex-col justify-between space-y-6">
+          <div class="flex justify-between items-center">
+            <div class="flex space-x-0.5 text-amber-500">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <span class="flex items-center space-x-1 text-[10px] font-bold text-emerald-400 uppercase tracking-wide bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full">
+              <i data-lucide="shield-check" class="w-3 h-3"></i>
+              <span>Verified Patient</span>
+            </span>
+          </div>
+          <p class="text-xs md:text-sm text-slate-300 leading-relaxed flex-grow">"I was embarrassed for years. Ordering was easier than I expected and within a week I felt like myself again. My relationship is in the best place it's been in years."</p>
+          <div class="border-t border-slate-905 pt-4">
+            <p class="text-xs font-bold text-slate-400">Michael, 47</p>
+          </div>
+        </div>
+
+        <div class="p-6 md:p-8 rounded-3xl bg-slate-900/30 border border-slate-900 hover:border-slate-800 hover:-translate-y-1 transition-all duration-350 flex flex-col justify-between space-y-6">
+          <div class="flex justify-between items-center">
+            <div class="flex space-x-0.5 text-amber-500">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <span class="flex items-center space-x-1 text-[10px] font-bold text-emerald-400 uppercase tracking-wide bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full">
+              <i data-lucide="shield-check" class="w-3 h-3"></i>
+              <span>Verified Patient</span>
+            </span>
+          </div>
+          <p class="text-xs md:text-sm text-slate-300 leading-relaxed flex-grow">"I tried a few online chewables and others. Verve was the first one that felt like an actual medical service. The doctor actually reviewed my information. The results were real."</p>
+          <div class="border-t border-slate-905 pt-4">
+            <p class="text-xs font-bold text-slate-400">David, 52</p>
+          </div>
+        </div>
+
+        <div class="p-6 md:p-8 rounded-3xl bg-slate-900/30 border border-slate-900 hover:border-slate-800 hover:-translate-y-1 transition-all duration-350 flex flex-col justify-between space-y-6">
+          <div class="flex justify-between items-center">
+            <div class="flex space-x-0.5 text-amber-500">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <span class="flex items-center space-x-1 text-[10px] font-bold text-emerald-400 uppercase tracking-wide bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full">
+              <i data-lucide="shield-check" class="w-3 h-3"></i>
+              <span>Verified Patient</span>
+            </span>
+          </div>
+          <p class="text-xs md:text-sm text-slate-300 leading-relaxed flex-grow">"Honestly the thing that convinced me was the discreet packaging. My partner didn't know until it was working. Best decision I've made for our relationship."</p>
+          <div class="border-t border-slate-905 pt-4">
+            <p class="text-xs font-bold text-slate-400">James, 38</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rating summary dashboard -->
+      <div class="max-w-xl mx-auto bg-slate-900/40 border border-slate-900 rounded-3xl p-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="text-center sm:text-left space-y-1">
+          <div class="flex items-center justify-center sm:justify-start space-x-1 text-amber-500">
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+          </div>
+          <p class="text-2xl font-serif font-black text-slate-100">4.8 out of 5</p>
+          <p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Based on 12,400+ Patient Reviews</p>
+        </div>
+
+        <div class="flex-grow max-w-[240px] w-full space-y-2">
+          <div class="flex items-center space-x-2 text-[10px] text-slate-400 font-semibold">
+            <span class="w-6 shrink-0">5 ★</span>
+            <div class="flex-grow h-2 bg-slate-950 border border-slate-900 rounded-full overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-brand-copper-500 to-brand-copper-300 rounded-full" style="width: 92%"></div>
+            </div>
+            <span class="w-8 text-right shrink-0">92%</span>
+          </div>
+          <div class="flex items-center space-x-2 text-[10px] text-slate-400 font-semibold">
+            <span class="w-6 shrink-0">4 ★</span>
+            <div class="flex-grow h-2 bg-slate-950 border border-slate-900 rounded-full overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-brand-copper-500 to-brand-copper-300 rounded-full" style="width: 6%"></div>
+            </div>
+            <span class="w-8 text-right shrink-0">6%</span>
+          </div>
+          <div class="flex items-center space-x-2 text-[10px] text-slate-400 font-semibold">
+            <span class="w-6 shrink-0">3 ★</span>
+            <div class="flex-grow h-2 bg-slate-950 border border-slate-900 rounded-full overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-brand-copper-500 to-brand-copper-300 rounded-full" style="width: 1%"></div>
+            </div>
+            <span class="w-8 text-right shrink-0">1%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 8: DISCREET DELIVERY ================= -->
+  <section class="bg-slate-900 py-16 md:py-24 border-t border-slate-950 relative overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-5xl bg-[radial-gradient(ellipse_at_center,rgba(206,136,82,0.03),transparent_70%)] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left Panel -->
+        <div class="lg:col-span-6 text-left space-y-6 md:space-y-8 order-2 lg:order-1">
+          <div class="space-y-4">
+            <span class="text-[10px] uppercase font-bold tracking-widest text-brand-copper-400">Your Privacy, Protected</span>
+            <h2 class="font-serif text-3xl md:text-4xl font-semibold tracking-tight text-slate-100">Discreet by Design.</h2>
+            <p class="font-sans text-sm text-slate-400 leading-relaxed">From your initial online assessment to the physical parcel in your mailbox, every layer of Verve is engineered to safeguard your confidentiality.</p>
+          </div>
+
+          <div class="space-y-3.5">
+            <div class="flex items-start space-x-3">
+              <div class="w-5 h-5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-3.5 h-3.5"></i>
+              </div>
+              <span class="text-xs md:text-sm text-slate-300 font-sans leading-relaxed">Ships in a plain, unmarked cardboard box</span>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="w-5 h-5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-3.5 h-3.5"></i>
+              </div>
+              <span class="text-xs md:text-sm text-slate-300 font-sans leading-relaxed">Billing statement appears neutrally as "VM Health Products"</span>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="w-5 h-5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-3.5 h-3.5"></i>
+              </div>
+              <span class="text-xs md:text-sm text-slate-300 font-sans leading-relaxed">Your clinical data is protected by bank-level HIPAA encryption</span>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="w-5 h-5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-3.5 h-3.5"></i>
+              </div>
+              <span class="text-xs md:text-sm text-slate-300 font-sans leading-relaxed">We never share, lease, or sell your health records. Period.</span>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <button onclick="openWizard()" class="w-full sm:w-auto px-8 py-3.5 bg-brand-copper-500 hover:bg-brand-copper-600 active:scale-[0.99] text-white text-xs font-bold tracking-wider uppercase rounded-xl transition-all shadow-md shadow-brand-copper-950/20">
+              Start Privately
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Panel: Rotating Box -->
+        <div class="lg:col-span-6 flex flex-col justify-center items-center order-1 lg:order-2">
+          <div class="w-full max-w-sm aspect-square bg-slate-950 border border-slate-800 rounded-3xl p-8 relative flex flex-col justify-between items-center group overflow-hidden shadow-2xl">
+            <div class="w-full flex justify-between items-center text-[9px] font-bold text-slate-500 uppercase tracking-widest pb-4 border-b border-slate-900">
+              <span>Shipping Container Spec</span>
+              <span class="text-emerald-400">Approved</span>
+            </div>
+
+            <!-- Box Graphic -->
+            <div class="flex-grow flex items-center justify-center relative w-full pt-4">
+              <div class="absolute bottom-8 w-40 h-6 bg-black/60 rounded-full blur-md group-hover:scale-x-110 transition-transform duration-500 pointer-events-none"></div>
+
+              <!-- CSS 3D Box container -->
+              <div class="relative w-44 h-28 transform rotate-x-[20deg] rotate-y-[-30deg] preserve-3d group-hover:rotate-y-[-15deg] group-hover:-translate-y-2 transition-all duration-500 ease-out cursor-grab active:cursor-grabbing">
+                <!-- Front -->
+                <div class="absolute inset-0 bg-amber-900/60 border border-amber-955 rounded shadow-inner flex items-center justify-center">
+                  <div class="w-14 h-8 bg-slate-100 rounded border border-slate-200/50 flex flex-col justify-center p-1 space-y-0.5 transform -rotate-1 shadow">
+                    <div class="w-6 h-1 bg-slate-400"></div>
+                    <div class="w-8 h-0.5 bg-slate-300"></div>
+                    <div class="w-10 h-0.5 bg-slate-300"></div>
+                    <div class="w-4 h-1.5 bg-slate-900 self-end mt-0.5"></div>
+                  </div>
+                </div>
+                <!-- Top -->
+                <div class="absolute left-0 right-0 top-0 h-12 bg-amber-900 border border-amber-955 rounded origin-top transform -rotate-x-[75deg] -translate-y-[24px]">
+                  <div class="absolute top-1/2 left-0 right-0 h-4 bg-slate-950/35 border-y border-slate-950/20 transform -translate-y-1/2"></div>
+                </div>
+                <!-- Left -->
+                <div class="absolute top-0 bottom-0 left-0 w-24 bg-amber-950/80 border border-amber-955 rounded origin-left transform -rotate-y-[75deg] -translate-x-[24px]">
+                  <div class="absolute top-4 left-4 flex space-x-0.5 items-center opacity-65">
+                    <div class="w-0.5 h-6 bg-slate-300"></div>
+                    <div class="w-1.5 h-6 bg-slate-300"></div>
+                    <div class="w-0.5 h-6 bg-slate-300"></div>
+                    <div class="w-1 h-6 bg-slate-300"></div>
+                    <div class="w-0.5 h-6 bg-slate-300"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- floating note -->
+              <div class="absolute top-1/3 right-4 transform translate-x-4 p-2 bg-slate-900 border border-slate-800 rounded-xl shadow-lg flex items-center space-x-1.5 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <i data-lucide="alert-circle" class="w-3.5 h-3.5 text-brand-copper-400"></i>
+                <span class="text-[10px] font-bold text-slate-300">No medical labels</span>
+              </div>
+            </div>
+
+            <div class="w-full text-center text-[10px] text-slate-500 font-medium pt-2 border-t border-slate-900">
+              Hover to inspect packaging. Ships inside a secure bubble-liner.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 9: PRICING ================= -->
+  <section id="pricing-plans" class="bg-slate-950 py-16 md:py-24 border-t border-slate-900/60 relative overflow-hidden">
+    <div class="absolute top-0 left-1/4 -translate-y-1/2 w-96 h-96 bg-brand-copper-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
+      <div class="text-center space-y-4">
+        <span class="text-[10px] uppercase font-bold tracking-widest text-brand-copper-400">Simple, Transparent Pricing</span>
+        <h2 class="font-serif text-3xl md:text-4xl font-semibold tracking-tight text-slate-100">Less than your morning coffee.</h2>
+        
+        <div class="max-w-xl mx-auto bg-slate-900/40 border border-slate-900 rounded-2xl p-4 mt-6">
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Traditional pharmacy brand-name ED medication: <strong class="text-slate-200 font-bold">$70 – $400 / pill</strong><br />
+            Our FDA-approved generic treatments: <strong class="text-brand-copper-300 font-bold">from $3.95 / pill</strong> (with free physician consult).
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+        <!-- Plan 1 -->
+        <div class="rounded-3xl p-6 md:p-8 border border-slate-900 hover:border-slate-800 bg-slate-900/30 flex flex-col justify-between space-y-6 transition-all duration-300">
+          <div class="space-y-4">
+            <div class="flex justify-between items-start">
+              <div class="space-y-0.5">
+                <h3 class="font-serif text-lg font-bold text-slate-100">Starter Plan</h3>
+                <p class="text-[10px] text-brand-copper-400 font-bold uppercase tracking-wider">4 pills / month</p>
+              </div>
+              <span class="px-2 py-0.5 rounded text-[8px] font-bold border bg-slate-950 text-slate-500 border-slate-850 tracking-wider uppercase">Try It Out</span>
+            </div>
+
+            <div class="space-y-1 py-4 border-y border-slate-900/60">
+              <div class="flex items-baseline space-x-1">
+                <span class="text-4xl font-serif font-black text-slate-100">$24</span>
+                <span class="text-xs text-slate-500 font-semibold">/ month</span>
+              </div>
+              <p class="text-[11px] text-slate-400 font-medium">Just $6.00 per dose</p>
+            </div>
+
+            <ul class="space-y-3 pt-2">
+              <li class="flex items-start space-x-2.5 text-xs text-slate-350">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-brand-copper-400 shrink-0 mt-0.5"></i>
+                <span>Free US-licensed physician review</span>
+              </li>
+              <li class="flex items-start space-x-2.5 text-xs text-slate-355">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-brand-copper-400 shrink-0 mt-0.5"></i>
+                <span>Standard packaging & shipping</span>
+              </li>
+              <li class="flex items-start space-x-2.5 text-xs text-slate-355">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-brand-copper-400 shrink-0 mt-0.5"></i>
+                <span>Free medical follow-ups</span>
+              </li>
+              <li class="flex items-start space-x-2.5 text-xs text-slate-355">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-brand-copper-400 shrink-0 mt-0.5"></i>
+                <span>Pause or cancel anytime</span>
+              </li>
+            </ul>
+          </div>
+
+          <button onclick="openWizard()" class="w-full py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-950 border border-slate-850 text-slate-300 hover:border-slate-800 transition-colors">
+            Start with Starter
+          </button>
+        </div>
+
+        <!-- Plan 2 (Popular) -->
+        <div class="rounded-3xl p-6 md:p-8 border border-brand-copper-400 bg-brand-copper-950/10 shadow-xl shadow-brand-copper-950/20 lg:-translate-y-2 flex flex-col justify-between space-y-6 relative transition-all duration-300">
+          <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 px-3 py-1 rounded-full text-[9px] font-bold bg-brand-copper-500 text-white border border-brand-copper-400 uppercase tracking-widest">
+            RECOMMENDED
+          </div>
+
+          <div class="space-y-4">
+            <div class="flex justify-between items-start">
+              <div class="space-y-0.5">
+                <h3 class="font-serif text-lg font-bold text-slate-100">Popular Plan</h3>
+                <p class="text-[10px] text-brand-copper-400 font-bold uppercase tracking-wider">10 pills / month</p>
+              </div>
+              <span class="px-2 py-0.5 rounded text-[8px] font-bold border bg-brand-copper-500/25 text-brand-copper-300 border-brand-copper-500/30 tracking-wider uppercase">Most Popular</span>
+            </div>
+
+            <div class="space-y-1 py-4 border-y border-slate-900/60">
+              <div class="flex items-baseline space-x-1">
+                <span class="text-4xl font-serif font-black text-slate-100">$48</span>
+                <span class="text-xs text-slate-500 font-semibold">/ month</span>
+              </div>
+              <p class="text-[11px] text-slate-400 font-medium">Just $4.80 per dose <span class="text-emerald-400 font-bold ml-1">(Save 30%)</span></p>
+            </div>
+
+            <ul class="space-y-3 pt-2">
+              <li class="flex items-start space-x-2.5 text-xs text-slate-355">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-brand-copper-400 shrink-0 mt-0.5"></i>
+                <span>Free US-licensed physician review</span>
+              </li>
+              <li class="flex items-start space-x-2.5 text-xs text-slate-355">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-brand-copper-400 shrink-0 mt-0.5"></i>
+                <span>Expedited priority shipping</span>
+              </li>
+              <li class="flex items-start space-x-2.5 text-xs text-slate-355">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-brand-copper-400 shrink-0 mt-0.5"></i>
+                <span>Free medical follow-ups</span>
+              </li>
+              <li class="flex items-start space-x-2.5 text-xs text-slate-355">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-brand-copper-400 shrink-0 mt-0.5"></i>
+                <span>24/7 dedicated support priority</span>
+              </li>
+              <li class="flex items-start space-x-2.5 text-xs text-slate-355">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-brand-copper-400 shrink-0 mt-0.5"></i>
+                <span>Adjust dose/frequency anytime</span>
+              </li>
+            </ul>
+          </div>
+
+          <button onclick="openWizard()" class="w-full py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-brand-copper-500 hover:bg-brand-copper-600 text-white shadow-lg shadow-brand-copper-950/20 transition-colors">
+            Get the Popular Plan
+          </button>
+        </div>
+
+        <!-- Plan 3 -->
+        <div class="rounded-3xl p-6 md:p-8 border border-slate-900 hover:border-slate-800 bg-slate-900/30 flex flex-col justify-between space-y-6 transition-all duration-300">
+          <div class="space-y-4">
+            <div class="flex justify-between items-start">
+              <div class="space-y-0.5">
+                <h3 class="font-serif text-lg font-bold text-slate-100">Premium Plan</h3>
+                <p class="text-[10px] text-brand-copper-400 font-bold uppercase tracking-wider">20 pills / month</p>
+              </div>
+              <span class="px-2 py-0.5 rounded text-[8px] font-bold border bg-slate-950 text-slate-500 border-slate-850 tracking-wider uppercase">Best Value</span>
+            </div>
+
+            <div class="space-y-1 py-4 border-y border-slate-900/60">
+              <div class="flex items-baseline space-x-1">
+                <span class="text-4xl font-serif font-black text-slate-100">$79</span>
+                <span class="text-xs text-slate-500 font-semibold">/ month</span>
+              </div>
+              <p class="text-[11px] text-slate-400 font-medium">Just $3.95 per dose <span class="text-emerald-400 font-bold ml-1">(Save 45%)</span></p>
+            </div>
+
+            <ul class="space-y-3 pt-2">
+              <li class="flex items-start space-x-2.5 text-xs text-slate-355">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-brand-copper-400 shrink-0 mt-0.5"></i>
+                <span>Free US-licensed physician review</span>
+              </li>
+              <li class="flex items-start space-x-2.5 text-xs text-slate-355">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-brand-copper-400 shrink-0 mt-0.5"></i>
+                <span>Free overnight shipping</span>
+              </li>
+              <li class="flex items-start space-x-2.5 text-xs text-slate-355">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-brand-copper-400 shrink-0 mt-0.5"></i>
+                <span>Priority medical follow-ups</span>
+              </li>
+              <li class="flex items-start space-x-2.5 text-xs text-slate-355">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-brand-copper-400 shrink-0 mt-0.5"></i>
+                <span>Dedicated urologist liaison</span>
+              </li>
+              <li class="flex items-start space-x-2.5 text-xs text-slate-355">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-brand-copper-400 shrink-0 mt-0.5"></i>
+                <span>Custom compounded options</span>
+              </li>
+            </ul>
+          </div>
+
+          <button onclick="openWizard()" class="w-full py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-950 border border-slate-850 text-slate-300 hover:border-slate-800 transition-colors">
+            Get Premium
+          </button>
+        </div>
+      </div>
+
+      <div class="max-w-2xl mx-auto border-t border-slate-900/60 pt-12 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <div class="flex justify-center md:justify-start gap-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+            <span>✓ Cancel anytime</span>
+            <span>•</span>
+            <span>✓ No hidden fees</span>
+            <span>•</span>
+            <span>✓ 30-day guarantee</span>
+          </div>
+          <p class="text-xs text-slate-500 max-w-md">If your assigned prescribing doctor determines treatment is not safe or suitable for you, your clinical fee is refunded 100% instantly.</p>
+        </div>
+
+        <div class="flex items-center space-x-3 bg-slate-900/40 border border-slate-900 rounded-2xl p-4 shrink-0">
+          <div class="w-12 h-12 text-brand-copper-400 shrink-0">
+            <svg class="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="45" stroke="#ce8852" stroke-width="2" stroke-dasharray="3 3" />
+              <circle cx="50" cy="50" r="40" stroke="#ce8852" stroke-width="1" />
+              <path d="M50 20 L58 36 L76 36 L62 48 L68 66 L50 56 L32 66 L38 48 L24 36 L42 36 Z" fill="#ce8852" fill-opacity="0.15" stroke="#ce8852" stroke-width="2" />
+            </svg>
+          </div>
+          <div class="space-y-0.5 text-left">
+            <h4 class="text-xs font-bold text-slate-200">30-Day Guarantee</h4>
+            <p class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">100% Risk Free</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 10: FAQ ================= -->
+  <section id="faq" class="bg-slate-900/60 py-16 md:py-24 border-t border-slate-950 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+      <div class="text-center space-y-4">
+        <span class="text-[10px] uppercase font-bold tracking-widest text-brand-copper-400">Frequently Asked Questions</span>
+        <h2 class="font-serif text-3xl md:text-4xl font-semibold tracking-tight text-slate-100">Answers to your questions.</h2>
+        <p class="font-sans text-sm text-slate-400 max-w-sm mx-auto">Everything you need to know about safety, shipping, and prescriptions.</p>
+      </div>
+
+      <div class="space-y-4 max-w-3xl mx-auto">
+        <!-- FAQ 1 -->
+        <div class="bg-slate-950/60 border border-slate-900 rounded-2xl overflow-hidden">
+          <button onclick="toggleFAQ(0)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-brand-copper-400 focus:ring-offset-2 focus:ring-offset-slate-950">
+            <span class="font-serif text-sm md:text-base font-bold text-slate-200 hover:text-slate-100 transition-colors pr-4">Is this a real prescription?</span>
+            <div id="faq-icon-0" class="w-6 h-6 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 shrink-0">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            </div>
+          </button>
+          <div id="faq-answer-0" class="hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out border-t border-slate-900/60">
+            <div class="px-6 py-5 text-xs md:text-sm text-slate-400 leading-relaxed font-sans bg-slate-950/20">
+              Yes. Every treatment offered is a genuine prescription medication. A US-licensed physician reviews your medical questionnaire and history and, if medically safe and appropriate, issues a real prescription.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="bg-slate-950/60 border border-slate-900 rounded-2xl overflow-hidden">
+          <button onclick="toggleFAQ(1)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-brand-copper-400 focus:ring-offset-2 focus:ring-offset-slate-950">
+            <span class="font-serif text-sm md:text-base font-bold text-slate-200 hover:text-slate-100 transition-colors pr-4">Will anyone know I ordered this?</span>
+            <div id="faq-icon-1" class="w-6 h-6 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 shrink-0">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            </div>
+          </button>
+          <div id="faq-answer-1" class="hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out border-t border-slate-900/60">
+            <div class="px-6 py-5 text-xs md:text-sm text-slate-400 leading-relaxed font-sans bg-slate-950/20">
+              No. We enforce strict privacy guidelines. Your treatment arrives in plain, unbranded packaging with no reference to Verve, ED, or medications. The charge on your statement appears neutrally as "VM Health Products". Your medical data is encrypted and protected under HIPAA compliance.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="bg-slate-950/60 border border-slate-900 rounded-2xl overflow-hidden">
+          <button onclick="toggleFAQ(2)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-brand-copper-400 focus:ring-offset-2 focus:ring-offset-slate-950">
+            <span class="font-serif text-sm md:text-base font-bold text-slate-200 hover:text-slate-100 transition-colors pr-4">What if it doesn't work for me?</span>
+            <div id="faq-icon-2" class="w-6 h-6 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 shrink-0">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            </div>
+          </button>
+          <div id="faq-answer-2" class="hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out border-t border-slate-900/60">
+            <div class="px-6 py-5 text-xs md:text-sm text-slate-400 leading-relaxed font-sans bg-slate-950/20">
+              We offer a 30-day money-back satisfaction guarantee on your first order. If the prescribed medication does not yield the desired efficacy, simply contact us for a full, hassle-free refund. If the dosage needs adjustment, follow-up consultations with your prescribing doctor are always 100% free.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="bg-slate-950/60 border border-slate-900 rounded-2xl overflow-hidden">
+          <button onclick="toggleFAQ(3)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-brand-copper-400 focus:ring-offset-2 focus:ring-offset-slate-950">
+            <span class="font-serif text-sm md:text-base font-bold text-slate-200 hover:text-slate-100 transition-colors pr-4">Is it safe to take these medications?</span>
+            <div id="faq-icon-3" class="w-6 h-6 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 shrink-0">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            </div>
+          </button>
+          <div id="faq-answer-3" class="hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out border-t border-slate-900/60">
+            <div class="px-6 py-5 text-xs md:text-sm text-slate-400 leading-relaxed font-sans bg-slate-950/20">
+              Sildenafil (Viagra active ingredient) and Tadalafil (Cialis active ingredient) are FDA-approved, highly researched, and clinically proven medications. However, they are not safe for everyone—especially individuals taking nitrates or with certain cardiovascular conditions. This is why our US-licensed doctors review your medical profile beforehand to verify safety.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="bg-slate-950/60 border border-slate-900 rounded-2xl overflow-hidden">
+          <button onclick="toggleFAQ(4)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-brand-copper-400 focus:ring-offset-2 focus:ring-offset-slate-950">
+            <span class="font-serif text-sm md:text-base font-bold text-slate-200 hover:text-slate-100 transition-colors pr-4">How quickly will it be delivered?</span>
+            <div id="faq-icon-4" class="w-6 h-6 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 shrink-0">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            </div>
+          </button>
+          <div id="faq-answer-4" class="hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out border-t border-slate-900/60">
+            <div class="px-6 py-5 text-xs md:text-sm text-slate-400 leading-relaxed font-sans bg-slate-950/20">
+              All orders are processed and sent to the pharmacy within 24 hours. Standard shipping takes 3–5 business days (free on all plans). Popular plans include expedited shipping (1–2 business days), and Premium plans receive free overnight shipping.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="bg-slate-950/60 border border-slate-900 rounded-2xl overflow-hidden">
+          <button onclick="toggleFAQ(5)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-brand-copper-400 focus:ring-offset-2 focus:ring-offset-slate-950">
+            <span class="font-serif text-sm md:text-base font-bold text-slate-200 hover:text-slate-100 transition-colors pr-4">Do I need health insurance?</span>
+            <div id="faq-icon-5" class="w-6 h-6 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 shrink-0">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            </div>
+          </button>
+          <div id="faq-answer-5" class="hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out border-t border-slate-900/60">
+            <div class="px-6 py-5 text-xs md:text-sm text-slate-400 leading-relaxed font-sans bg-slate-950/20">
+              No. Verve does not require health insurance. We accept payments directly, keeping medical consultation, prescribing fees, and shipping costs bundled into one transparent, affordable monthly price.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 7 -->
+        <div class="bg-slate-950/60 border border-slate-900 rounded-2xl overflow-hidden">
+          <button onclick="toggleFAQ(6)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-brand-copper-400 focus:ring-offset-2 focus:ring-offset-slate-950">
+            <span class="font-serif text-sm md:text-base font-bold text-slate-200 hover:text-slate-100 transition-colors pr-4">Can I cancel my subscription at any time?</span>
+            <div id="faq-icon-6" class="w-6 h-6 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 shrink-0">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            </div>
+          </button>
+          <div id="faq-answer-6" class="hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out border-t border-slate-900/60">
+            <div class="px-6 py-5 text-xs md:text-sm text-slate-400 leading-relaxed font-sans bg-slate-950/20">
+              Yes, absolutely. There are no contracts, commitments, or cancellation fees. You can cancel, pause, or modify your subscription directly from your secure patient dashboard with a single click, or by emailing customer support.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 8 -->
+        <div class="bg-slate-950/60 border border-slate-900 rounded-2xl overflow-hidden">
+          <button onclick="toggleFAQ(7)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-brand-copper-400 focus:ring-offset-2 focus:ring-offset-slate-950">
+            <span class="font-serif text-sm md:text-base font-bold text-slate-200 hover:text-slate-100 transition-colors pr-4">What's the difference between sildenafil and tadalafil?</span>
+            <div id="faq-icon-7" class="w-6 h-6 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 shrink-0">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            </div>
+          </button>
+          <div id="faq-answer-7" class="hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out border-t border-slate-900/60">
+            <div class="px-6 py-5 text-xs md:text-sm text-slate-400 leading-relaxed font-sans bg-slate-950/20">
+              Sildenafil (generic Viagra) is designed for as-needed use: it takes 30–60 minutes to take effect and remains active for 4–6 hours. Tadalafil (generic Cialis) can be taken as a low daily dose: it stays in your system continuously, enabling intimacy whenever the moment is right without needing to plan ahead.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 11: FINAL CTA ================= -->
+  <section class="relative overflow-hidden py-20 md:py-32 bg-slate-950 border-t border-slate-900/60">
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-950 to-brand-copper-950/20"></div>
+    <div class="absolute -bottom-48 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand-copper-500/10 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8 md:space-y-12">
+      <div class="max-w-3xl mx-auto space-y-4">
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-100 leading-tight">
+          The First Step Is the Hardest.<br>
+          <span class="text-brand-copper-400 italic">We've Made It Easy.</span>
+        </h2>
+        <p class="font-sans text-sm md:text-base text-slate-350 max-w-xl mx-auto leading-relaxed">Thousands of men have reclaimed their confidence. In less time than it took to read this page, you could have your private health consultation underway.</p>
+      </div>
+
+      <div class="space-y-3.5 max-w-md mx-auto">
+        <button onclick="openWizard()" class="w-full px-8 py-4 bg-brand-copper-500 hover:bg-brand-copper-600 active:scale-[0.99] text-white text-sm font-bold tracking-wider uppercase rounded-2xl transition-all shadow-xl shadow-brand-copper-950/40 hover:shadow-brand-copper-950/60 block text-center">
+          Start My Free Consultation
+        </button>
+        <div class="flex justify-center gap-x-4 gap-y-1 text-[10px] md:text-xs text-slate-400 font-medium uppercase tracking-wider">
+          <span>✓ Free to start</span>
+          <span class="text-slate-800">•</span>
+          <span>⏱️ 3 Minutes</span>
+          <span class="text-slate-800">•</span>
+          <span>📦 Plain Box</span>
+        </div>
+      </div>
+
+      <div class="max-w-md mx-auto h-px bg-slate-900"></div>
+
+      <div class="flex flex-wrap justify-center gap-6 md:gap-12 pt-2 text-[10px] md:text-xs font-semibold tracking-wider text-slate-400">
+        <span class="flex items-center space-x-2">
+          <i data-lucide="lock" class="w-4 h-4 text-brand-copper-400"></i>
+          <span>HIPAA Secure</span>
+        </span>
+        <span class="flex items-center space-x-2">
+          <i data-lucide="truck" class="w-4 h-4 text-brand-copper-400"></i>
+          <span>Plain Packaging</span>
+        </span>
+        <span class="flex items-center space-x-2">
+          <i data-lucide="shield-check" class="w-4 h-4 text-brand-copper-400"></i>
+          <span>Licensed MDs</span>
+        </span>
+        <span class="flex items-center space-x-2">
+          <i data-lucide="award" class="w-4 h-4 text-brand-copper-400"></i>
+          <span>30-Day Guarantee</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 12: FOOTER ================= -->
+  <footer class="bg-slate-950 text-slate-450 py-16 border-t border-slate-900/60 font-sans text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 pb-8 border-b border-slate-900">
+        <div class="col-span-2 md:col-span-1 space-y-4">
+          <span class="font-serif text-lg font-bold tracking-[0.2em] text-slate-100 uppercase">Verve</span>
+          <p class="text-[11px] text-slate-500 leading-relaxed max-w-[200px]">Verve Health provides access to professional clinical reviews, prescriptions, and premium wellness solutions.</p>
+          <div class="flex space-x-3 text-slate-600">
+            <span class="hover:text-brand-copper-400 cursor-pointer">Twitter</span>
+            <span>•</span>
+            <span class="hover:text-brand-copper-400 cursor-pointer">Instagram</span>
+            <span>•</span>
+            <span class="hover:text-brand-copper-400 cursor-pointer">LinkedIn</span>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-slate-200 font-bold uppercase tracking-wider text-[10px]">Treatments</h4>
+          <ul class="space-y-2 text-[11px]">
+            <li><a href="#treatments" class="hover:text-slate-200 transition-colors">Sildenafil (Viagra active)</a></li>
+            <li><a href="#treatments" class="hover:text-slate-200 transition-colors">Tadalafil (Cialis active)</a></li>
+            <li><a href="#treatments" class="hover:text-slate-200 transition-colors">Combination Formula</a></li>
+            <li><a href="#how-it-works" class="hover:text-slate-200 transition-colors">How It Works</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-slate-200 font-bold uppercase tracking-wider text-[10px]">Company</h4>
+          <ul class="space-y-2 text-[11px]">
+            <li><span class="hover:text-slate-200 transition-colors cursor-pointer">About Us</span></li>
+            <li><span class="hover:text-slate-200 transition-colors cursor-pointer">Our Doctors</span></li>
+            <li><span class="hover:text-slate-200 transition-colors cursor-pointer">Medical Journal</span></li>
+            <li><span class="hover:text-slate-200 transition-colors cursor-pointer">Careers</span></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-slate-200 font-bold uppercase tracking-wider text-[10px]">Support</h4>
+          <ul class="space-y-2 text-[11px]">
+            <li><a href="#faq" class="hover:text-slate-200 transition-colors">FAQs</a></li>
+            <li><span class="hover:text-slate-200 transition-colors cursor-pointer">Help & Contact</span></li>
+            <li><span class="hover:text-slate-200 transition-colors cursor-pointer">Privacy Policy</span></li>
+            <li><span class="hover:text-slate-200 transition-colors cursor-pointer">Terms of Service</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="space-y-6 text-[10px] text-slate-500 leading-relaxed font-medium">
+        <div class="space-y-2">
+          <p>© 2026 Verve Health. All rights reserved.</p>
+          <p>Verve is not a pharmacy. Prescriptions issued by licensed physicians are fulfilled by certified, partner mail-order pharmacies. Services are not available in all US states.</p>
+          <p class="border-l border-slate-800 pl-3">
+            <strong>Medical Disclaimer:</strong> These statements have not been evaluated by the Food and Drug Administration. Verve connects patients with licensed physicians. Prescription medications have clinical side effects and risks. Please read patient safety brochures and consult thoroughly with your prescribing physician. Individual treatment results may vary.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-x-4 gap-y-1 text-slate-650 border-t border-slate-900/60 pt-4">
+          <span class="hover:text-slate-450 cursor-pointer">Privacy Policy</span>
+          <span>•</span>
+          <span class="hover:text-slate-450 cursor-pointer">Terms of Use</span>
+          <span>•</span>
+          <span class="hover:text-slate-450 cursor-pointer">Medical Disclaimer</span>
+          <span>•</span>
+          <span class="hover:text-slate-450 cursor-pointer">Cookie Settings</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= SECTION 13: CONSULTATION WIZARD (MODAL) ================= -->
+  <div id="wizard-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+    <div class="relative w-full max-w-lg bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl transition-transform duration-300 scale-95" id="wizard-card">
+      
+      <!-- Progress Bar -->
+      <div class="absolute top-0 left-0 right-0 h-1 bg-slate-800">
+        <div id="wizard-progress" class="h-full bg-gradient-to-r from-brand-copper-500 to-brand-copper-300 w-1/4 transition-all duration-500"></div>
+      </div>
+
+      <!-- Header -->
+      <div class="p-6 pb-2 flex justify-between items-center border-b border-slate-800/50 mt-1">
+        <div class="flex items-center space-x-2 text-slate-400 text-xs tracking-wider uppercase font-semibold">
+          <span>Consultation Wizard</span>
+          <span>•</span>
+          <span class="text-brand-copper-400" id="wizard-step-counter">Step 1 of 4</span>
+        </div>
+        <button onclick="closeWizard()" class="p-1.5 rounded-full hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition-colors" aria-label="Close consultation modal">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Panel Content -->
+      <div class="p-8 min-h-[340px] flex flex-col justify-between">
+        
+        <!-- Step 1 -->
+        <div id="w-step-1" class="space-y-6">
+          <div>
+            <h3 class="font-serif text-2xl font-semibold text-slate-100 leading-tight">What is your primary clinical goal?</h3>
+            <p class="mt-2 text-slate-400 text-sm">This helps our physicians match you with the correct active ingredient.</p>
+          </div>
+          <div class="space-y-3">
+            <button onclick="selectGoal('hardness')" class="w-full p-4 text-left rounded-2xl border border-slate-800 hover:border-slate-700 bg-slate-950/40 transition-all duration-200 flex items-center justify-between" id="goal-hardness">
+              <div>
+                <p class="font-medium text-slate-200 text-sm">Achieve firmer erections</p>
+                <p class="text-xs text-slate-500 mt-0.5">Best served by fast-acting treatment.</p>
+              </div>
+              <div class="check-indicator hidden w-5 h-5 rounded-full bg-brand-copper-500 flex items-center justify-center text-white"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+            </button>
+            <button onclick="selectGoal('duration')" class="w-full p-4 text-left rounded-2xl border border-slate-800 hover:border-slate-700 bg-slate-950/40 transition-all duration-200 flex items-center justify-between" id="goal-duration">
+              <div>
+                <p class="font-medium text-slate-200 text-sm">Maintain erections longer</p>
+                <p class="text-xs text-slate-500 mt-0.5">Focus on consistent clinical window.</p>
+              </div>
+              <div class="check-indicator hidden w-5 h-5 rounded-full bg-brand-copper-500 flex items-center justify-center text-white"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+            </button>
+            <button onclick="selectGoal('spontaneity')" class="w-full p-4 text-left rounded-2xl border border-slate-800 hover:border-slate-700 bg-slate-950/40 transition-all duration-200 flex items-center justify-between" id="goal-spontaneity">
+              <div>
+                <p class="font-medium text-slate-200 text-sm">Spontaneous intimacy</p>
+                <p class="text-xs text-slate-500 mt-0.5">Best served by daily low-dose medication.</p>
+              </div>
+              <div class="check-indicator hidden w-5 h-5 rounded-full bg-brand-copper-500 flex items-center justify-center text-white"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div id="w-step-2" class="space-y-6 hidden">
+          <div>
+            <h3 class="font-serif text-2xl font-semibold text-slate-100 leading-tight">How often do you experience performance issues?</h3>
+            <p class="mt-2 text-slate-400 text-sm">ED is highly common. This helps tailor the dosage schedule.</p>
+          </div>
+          <div class="space-y-3">
+            <button onclick="selectFrequency('always')" class="w-full p-4 text-left rounded-2xl border border-slate-800 hover:border-slate-700 bg-slate-950/40 transition-all duration-200 flex items-center justify-between" id="freq-always">
+              <div>
+                <p class="font-medium text-slate-200 text-sm">Almost every time</p>
+                <p class="text-xs text-slate-500 mt-0.5">Consistent clinical support recommended.</p>
+              </div>
+              <div class="check-indicator hidden w-5 h-5 rounded-full bg-brand-copper-500 flex items-center justify-center text-white"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+            </button>
+            <button onclick="selectFrequency('frequent')" class="w-full p-4 text-left rounded-2xl border border-slate-800 hover:border-slate-700 bg-slate-950/40 transition-all duration-200 flex items-center justify-between" id="freq-frequent">
+              <div>
+                <p class="font-medium text-slate-200 text-sm">More than half the time</p>
+                <p class="text-xs text-slate-500 mt-0.5">Standard therapeutic doses.</p>
+              </div>
+              <div class="check-indicator hidden w-5 h-5 rounded-full bg-brand-copper-500 flex items-center justify-center text-white"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+            </button>
+            <button onclick="selectFrequency('occasional')" class="w-full p-4 text-left rounded-2xl border border-slate-800 hover:border-slate-700 bg-slate-950/40 transition-all duration-200 flex items-center justify-between" id="freq-occasional">
+              <div>
+                <p class="font-medium text-slate-200 text-sm">Occasionally (under stress)</p>
+                <p class="text-xs text-slate-500 mt-0.5">As-needed treatments recommended.</p>
+              </div>
+              <div class="check-indicator hidden w-5 h-5 rounded-full bg-brand-copper-500 flex items-center justify-center text-white"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div id="w-step-3" class="space-y-6 hidden">
+          <div class="flex items-start space-x-3 bg-brand-copper-950/10 border border-brand-copper-900/30 p-4 rounded-2xl">
+            <i data-lucide="alert-circle" class="w-5 h-5 text-brand-copper-400 shrink-0 mt-0.5"></i>
+            <div>
+              <h4 class="font-medium text-brand-copper-300 text-xs uppercase tracking-wider">Clinical Safety Screening</h4>
+              <p class="text-xs text-slate-400 mt-1">PDE5 inhibitors cannot be taken with nitrates or certain cardiovascular medications.</p>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-serif text-xl font-semibold text-slate-100 leading-tight">Are you currently taking Nitroglycerin or other nitrates?</h3>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <button onclick="selectNitrates('yes')" class="p-4 text-center rounded-2xl border border-slate-800 hover:border-slate-700 bg-slate-950/40 text-slate-300 transition-all duration-200" id="nitrates-yes">
+              <span class="block font-medium text-sm">Yes, I take nitrates</span>
+            </button>
+            <button onclick="selectNitrates('no')" class="p-4 text-center rounded-2xl border border-slate-800 hover:border-slate-700 bg-slate-950/40 text-slate-355 transition-all duration-200" id="nitrates-no">
+              <span class="block font-medium text-sm">No, I do not</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div id="w-step-4" class="space-y-6 hidden">
+          
+          <!-- Matched layout -->
+          <div id="w-matched" class="space-y-5">
+            <div class="text-center space-y-2">
+              <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-950/30 border border-emerald-900/50 text-emerald-400 mx-auto">
+                <i data-lucide="shield" class="w-6 h-6"></i>
+              </div>
+              <h3 class="font-serif text-2xl font-semibold text-slate-100">Your Medical Profile Match</h3>
+              <p class="text-slate-400 text-xs">Prescribed safely online by US-licensed physicians.</p>
+            </div>
+
+            <div class="bg-slate-950/60 border border-slate-850 rounded-2xl p-5 text-center space-y-3 relative overflow-hidden">
+              <div class="absolute top-2 right-2 px-2.5 py-0.5 rounded-full text-[9px] font-bold bg-brand-copper-500/20 text-brand-copper-300 border border-brand-copper-500/30 tracking-wider uppercase">Clinical Match</div>
+              <span class="text-xs text-brand-copper-400 font-bold uppercase tracking-widest block">Recommended treatment</span>
+              <h4 class="text-2xl font-serif font-bold text-slate-100" id="recommendation-title">Sildenafil (Generic Viagra)</h4>
+              <p class="text-xs text-slate-400 max-w-xs mx-auto" id="recommendation-desc">Best for direct, fast-acting as-needed usage. Take 30–60 minutes before intimacy. Effective for 4–6 hours.</p>
+            </div>
+
+            <div class="text-center text-xs text-slate-500 flex items-center justify-center space-x-1">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i>
+              <span>Free Doctor Review & 30-Day Satisfaction Guarantee</span>
+            </div>
+          </div>
+
+          <!-- Contraindicated layout -->
+          <div id="w-referred" class="text-center space-y-4 hidden">
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-red-950/30 border border-red-900/50 text-red-400 mx-auto">
+              <i data-lucide="alert-triangle" class="w-8 h-8"></i>
+            </div>
+            <div>
+              <h3 class="font-serif text-2xl font-semibold text-slate-100">In-Person Review Required</h3>
+              <p class="mt-2 text-slate-400 text-sm max-w-sm mx-auto">Because you are currently taking nitrates, PDE5 inhibitors are contraindicated. We recommend scheduling an in-person appointment with your primary care provider.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls Footer -->
+        <div class="mt-8 pt-4 border-t border-slate-800/50 flex justify-between items-center" id="wizard-controls">
+          <button onclick="prevStep()" id="w-back-btn" class="hidden text-xs font-semibold text-slate-400 hover:text-slate-200 transition-colors py-2 px-4">Back</button>
+          <div id="w-spacer" class="flex-grow"></div>
+          
+          <button onclick="nextStep()" id="w-next-btn" disabled class="px-5 py-2.5 bg-brand-copper-500 hover:bg-brand-copper-600 disabled:opacity-50 disabled:hover:bg-brand-copper-500 text-white rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5">
+            <span>Continue</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+
+          <button onclick="finishWizard()" id="w-finish-btn" class="hidden w-full py-3 bg-brand-copper-500 hover:bg-brand-copper-600 text-white font-bold rounded-xl text-sm tracking-wide transition-all shadow-lg shadow-brand-copper-950/20">
+            View Matching Plans & Pricing
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SECTION 14: STICKY BOTTOM MOBILE PILL ================= -->
+  <div id="sticky-mobile-cta" class="fixed bottom-6 left-4 right-4 z-40 lg:hidden transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none">
+    <button onclick="openWizard()" class="w-full py-4 bg-brand-copper-500 hover:bg-brand-copper-600 text-white font-bold text-xs uppercase tracking-widest rounded-2xl shadow-2xl shadow-brand-copper-950/80 border border-brand-copper-400 active:scale-[0.98] transition-all">
+      Get Started — It's Free
+    </button>
+  </div>
+
+  <!-- ================= SCRIPT LOGIC ================= -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // ----------------------------------------------------
+    // Navbar Scroll Listener (Smart Hide/Show)
+    // ----------------------------------------------------
+    let lastScrollY = window.scrollY;
+    const navbar = document.getElementById('navbar-container');
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scroll down
+        navbar.style.transform = 'translateY(-100%)';
+      } else {
+        // Scroll up
+        navbar.style.transform = 'translateY(0)';
+      }
+      lastScrollY = currentScrollY;
+    });
+
+    // ----------------------------------------------------
+    // Mobile Nav Toggle
+    // ----------------------------------------------------
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileNavPanel = document.getElementById('mobile-nav-panel');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileNavPanel.classList.toggle('hidden');
+    });
+
+    function closeMobileMenu() {
+      mobileNavPanel.classList.add('hidden');
+    }
+
+    // ----------------------------------------------------
+    // Mobile Sticky CTA Scroll Listener
+    // ----------------------------------------------------
+    const stickyMobileCTA = document.getElementById('sticky-mobile-cta');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        stickyMobileCTA.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+      } else {
+        stickyMobileCTA.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+      }
+    });
+
+    // ----------------------------------------------------
+    // How It Works Timeline Highlight Line
+    // ----------------------------------------------------
+    const stepLine = document.getElementById('step-connector-line');
+    function updateStepLine(step) {
+      if (step === 1) stepLine.style.width = '33%';
+      if (step === 2) stepLine.style.width = '66%';
+      if (step === 3) stepLine.style.width = '100%';
+    }
+    function resetStepLine() {
+      stepLine.style.width = '15%';
+    }
+
+    // ----------------------------------------------------
+    // Product Catalog Cards Switcher
+    // ----------------------------------------------------
+    function selectTreatmentCard(idx) {
+      for (let i = 0; i < 3; i++) {
+        const card = document.getElementById(`t-card-${i}`);
+        const check = document.getElementById(`t-card-check-${i}`);
+        
+        if (i === idx) {
+          card.className = "cursor-pointer relative p-6 md:p-8 rounded-3xl border transition-all duration-300 flex flex-col justify-between space-y-6 border-brand-copper-400 bg-brand-copper-950/20 shadow-xl shadow-brand-copper-950/10";
+          check.className = "w-6 h-6 rounded-full border border-brand-copper-400 bg-brand-copper-400 text-white flex items-center justify-center transition-all";
+        } else {
+          card.className = "cursor-pointer relative p-6 md:p-8 rounded-3xl border border-slate-900 hover:border-slate-800 bg-slate-900/30 transition-all duration-300 flex flex-col justify-between space-y-6";
+          check.className = "w-6 h-6 rounded-full border border-slate-800 text-transparent flex items-center justify-center transition-all";
+        }
+      }
+    }
+
+    // ----------------------------------------------------
+    // FAQ Accordion Toggle
+    // ----------------------------------------------------
+    function toggleFAQ(idx) {
+      const ans = document.getElementById(`faq-answer-${idx}`);
+      const icon = document.getElementById(`faq-icon-${idx}`);
+      const isOpen = !ans.classList.contains('hidden');
+
+      // Close all first
+      for (let i = 0; i < 8; i++) {
+        document.getElementById(`faq-answer-${i}`).classList.add('hidden');
+        document.getElementById(`faq-answer-${i}`).style.maxHeight = '0';
+        document.getElementById(`faq-icon-${i}`).innerHTML = '<i data-lucide="plus" class="w-3.5 h-3.5"></i>';
+      }
+
+      if (!isOpen) {
+        ans.classList.remove('hidden');
+        ans.style.maxHeight = '240px';
+        icon.innerHTML = '<i data-lucide="minus" class="w-3.5 h-3.5"></i>';
+      }
+      lucide.createIcons();
+    }
+
+    // ----------------------------------------------------
+    // Consultation Wizard Wizard Logic
+    // ----------------------------------------------------
+    let currentStep = 1;
+    let wizardAnswers = { goal: '', frequency: '', nitrates: '' };
+
+    const wizardModal = document.getElementById('wizard-modal');
+    const wizardCard = document.getElementById('wizard-card');
+    const progress = document.getElementById('wizard-progress');
+    const stepCounter = document.getElementById('wizard-step-counter');
+
+    function openWizard() {
+      wizardModal.classList.remove('hidden');
+      setTimeout(() => {
+        wizardModal.classList.remove('opacity-0');
+        wizardCard.classList.remove('scale-95');
+      }, 50);
+      resetWizard();
+    }
+
+    function closeWizard() {
+      wizardModal.classList.add('opacity-0');
+      wizardCard.classList.add('scale-95');
+      setTimeout(() => {
+        wizardModal.classList.add('hidden');
+      }, 300);
+    }
+
+    function resetWizard() {
+      currentStep = 1;
+      wizardAnswers = { goal: '', frequency: '', nitrates: '' };
+      showStep(1);
+      updateControls();
+    }
+
+    function showStep(step) {
+      for (let i = 1; i <= 4; i++) {
+        const panel = document.getElementById(`w-step-${i}`);
+        if (i === step) {
+          panel.classList.remove('hidden');
+        } else {
+          panel.classList.add('hidden');
+        }
+      }
+      progress.style.width = `${(step / 4) * 100}%`;
+      stepCounter.innerText = `Step ${step} of 4`;
+    }
+
+    function updateControls() {
+      const backBtn = document.getElementById('w-back-btn');
+      const nextBtn = document.getElementById('w-next-btn');
+      const finishBtn = document.getElementById('w-finish-btn');
+      const spacer = document.getElementById('w-spacer');
+
+      if (currentStep === 1) {
+        backBtn.classList.add('hidden');
+      } else if (currentStep < 4) {
+        backBtn.classList.remove('hidden');
+      } else {
+        backBtn.classList.add('hidden'); // No back from result
+      }
+
+      if (currentStep < 3) {
+        nextBtn.classList.remove('hidden');
+        finishBtn.classList.add('hidden');
+        
+        // Disable next until answer selected
+        let hasAnswer = false;
+        if (currentStep === 1 && wizardAnswers.goal) hasAnswer = true;
+        if (currentStep === 2 && wizardAnswers.frequency) hasAnswer = true;
+        nextBtn.disabled = !hasAnswer;
+      } else if (currentStep === 3) {
+        nextBtn.classList.add('hidden'); // Advanced by option select in step 3
+        finishBtn.classList.add('hidden');
+      } else {
+        nextBtn.classList.add('hidden');
+        finishBtn.classList.remove('hidden');
+      }
+    }
+
+    function selectGoal(goal) {
+      wizardAnswers.goal = goal;
+      
+      // Toggle styles
+      const options = ['hardness', 'duration', 'spontaneity'];
+      options.forEach(opt => {
+        const btn = document.getElementById(`goal-${opt}`);
+        const indicator = btn.querySelector('.check-indicator');
+        if (opt === goal) {
+          btn.classList.add('border-brand-copper-400', 'bg-brand-copper-950/20');
+          indicator.classList.remove('hidden');
+        } else {
+          btn.classList.remove('border-brand-copper-400', 'bg-brand-copper-950/20');
+          indicator.classList.add('hidden');
+        }
+      });
+      
+      updateControls();
+      setTimeout(() => {
+        nextStep();
+      }, 350);
+    }
+
+    function selectFrequency(freq) {
+      wizardAnswers.frequency = freq;
+      
+      const options = ['always', 'frequent', 'occasional'];
+      options.forEach(opt => {
+        const btn = document.getElementById(`freq-${opt}`);
+        const indicator = btn.querySelector('.check-indicator');
+        if (opt === freq) {
+          btn.classList.add('border-brand-copper-400', 'bg-brand-copper-950/20');
+          indicator.classList.remove('hidden');
+        } else {
+          btn.classList.remove('border-brand-copper-400', 'bg-brand-copper-950/20');
+          indicator.classList.add('hidden');
+        }
+      });
+
+      updateControls();
+      setTimeout(() => {
+        nextStep();
+      }, 350);
+    }
+
+    function selectNitrates(val) {
+      wizardAnswers.nitrates = val;
+      
+      const btnYes = document.getElementById('nitrates-yes');
+      const btnNo = document.getElementById('nitrates-no');
+      
+      if (val === 'yes') {
+        btnYes.className = "p-4 text-center rounded-2xl border border-brand-copper-400 bg-brand-copper-950/20 text-brand-copper-300 transition-all duration-200";
+        btnNo.className = "p-4 text-center rounded-2xl border border-slate-800 hover:border-slate-700 bg-slate-950/40 text-slate-355 transition-all duration-200";
+      } else {
+        btnYes.className = "p-4 text-center rounded-2xl border border-slate-800 hover:border-slate-700 bg-slate-950/40 text-slate-300 transition-all duration-200";
+        btnNo.className = "p-4 text-center rounded-2xl border border-brand-copper-400 bg-brand-copper-950/20 text-brand-copper-300 transition-all duration-200";
+      }
+      
+      setTimeout(() => {
+        calculateRecommendation();
+        currentStep = 4;
+        showStep(4);
+        updateControls();
+      }, 350);
+    }
+
+    function calculateRecommendation() {
+      const matchPanel = document.getElementById('w-matched');
+      const refPanel = document.getElementById('w-referred');
+      const title = document.getElementById('recommendation-title');
+      const desc = document.getElementById('recommendation-desc');
+
+      if (wizardAnswers.nitrates === 'yes') {
+        matchPanel.classList.add('hidden');
+        refPanel.classList.remove('hidden');
+        document.getElementById('w-finish-btn').innerText = "Close & View FAQs";
+      } else {
+        matchPanel.classList.remove('hidden');
+        refPanel.classList.add('hidden');
+        document.getElementById('w-finish-btn').innerText = "View Matching Plans & Pricing";
+
+        if (wizardAnswers.goal === 'spontaneity' || wizardAnswers.frequency === 'always') {
+          title.innerText = "Tadalafil (Generic Cialis)";
+          desc.innerText = "Best for spontaneity. Low daily dose allows you to be ready anytime, anywhere, with no timing constraints.";
+        } else {
+          title.innerText = "Sildenafil (Generic Viagra)";
+          desc.innerText = "Best for direct, fast-acting as-needed usage. Take 30–60 minutes before intimacy. Effective for 4–6 hours.";
+        }
+      }
+    }
+
+    function nextStep() {
+      if (currentStep < 4) {
+        currentStep++;
+        showStep(currentStep);
+        updateControls();
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 1) {
+        currentStep--;
+        showStep(currentStep);
+        updateControls();
+      }
+    }
+
+    function finishWizard() {
+      closeWizard();
+      
+      if (wizardAnswers.nitrates === 'yes') {
+        // Scroll to FAQ
+        const element = document.getElementById('faq');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        // Scroll to Pricing
+        const element = document.getElementById('pricing-plans');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  </script>
+</body>
+</html>
